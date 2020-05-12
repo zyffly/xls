@@ -76,8 +76,11 @@ public class XlsDataPoi {
 					Iterator iteratorCell = row.cellIterator();
 					while (iteratorCell.hasNext()) {
 						Cell cell = (Cell) iteratorCell.next();
+						cell.setCellType(Cell.CELL_TYPE_STRING);
 						String value = cell.getStringCellValue();
-						mMap.put(cell.getColumnIndex(), value);
+						if(value != null && value.length() != 0) {
+							mMap.put(cell.getColumnIndex(), value);
+						}
 					}
 					mList.add(mMap);
 				}

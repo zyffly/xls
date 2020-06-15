@@ -109,27 +109,29 @@ public class XlsNoTranslation extends JFrame implements ActionListener {
 		for (int i = 0; i < dataList.size(); i++) {
 			LinkedHashMap<Integer, String> map = dataList.get(i);
 			if (map.size() < titleMap1.size()) {
-				Iterator titleIter = titleMap1.entrySet().iterator();
-				String mapVal_en = null;
-				String mapVal_zh_rCN = null;
-				boolean flog = false;
-				while (titleIter.hasNext()) {
-					Map.Entry titleEntry = (Map.Entry) titleIter.next();
-					Object titleKey = titleEntry.getKey();
-					Object titleVal = titleEntry.getValue();
-					String titleValue = titleVal.toString();
-					if (titleValue != null && titleValue.equals("en")) {
-						mapVal_en = map.get((int) titleKey);
-					} else if (titleValue != null
-							&& titleValue.equals("zh-rCN")) {
-						mapVal_zh_rCN = map.get((int) titleKey);
-					}
-				}
-				// if (mapVal_en != null && !mapVal_en.equals("")
-				// && mapVal_zh_rCN != null && !mapVal_zh_rCN.equals("")) {
-					if (mapVal_en != null && !mapVal_en.equals("")) {
-					mList.add(map);
-				}
+                mList.add(map);
+
+//				Iterator titleIter = titleMap1.entrySet().iterator();
+//				String mapVal_en = null;
+//				String mapVal_zh_rCN = null;
+//				boolean flog = false;
+//				while (titleIter.hasNext()) {
+//					Map.Entry titleEntry = (Map.Entry) titleIter.next();
+//					Object titleKey = titleEntry.getKey();
+//					Object titleVal = titleEntry.getValue();
+//					String titleValue = titleVal.toString();
+//					if (titleValue != null && titleValue.equals("en")) {
+//						mapVal_en = map.get((int) titleKey);
+//					} else if (titleValue != null
+//							&& titleValue.equals("zh-rCN")) {
+//						mapVal_zh_rCN = map.get((int) titleKey);
+//					}
+//				}
+//				// if (mapVal_en != null && !mapVal_en.equals("")
+//				// && mapVal_zh_rCN != null && !mapVal_zh_rCN.equals("")) {
+//					if (mapVal_en != null && !mapVal_en.equals("")) {
+//					mList.add(map);
+//				}
 			} else {
 				Iterator iter = map.entrySet().iterator();
 				String xxValue = null;
@@ -138,10 +140,6 @@ public class XlsNoTranslation extends JFrame implements ActionListener {
 					Object key = entry.getKey();
 					Object val = entry.getValue();
 					xxValue = val.toString();
-					
-					if (map.get(0).equals("http")) {
-						System.out.println("大小-----"  +  map.size()  + "      " + xxValue  + "    " + (xxValue == null || xxValue.equals("")));
-					}
 					if (xxValue == null || xxValue.equals("")) {
 						mList.add(map);
 						break;

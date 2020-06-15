@@ -100,7 +100,7 @@ public class XmlData {
 							String text = n.getTextContent();
 							if (text.trim().length() == 0)
 								continue;
-							mMap.put(id + "_" + k, n.getTextContent());
+							mMap.put(id + "-" + k, n.getTextContent());
 							k++;
 						}
 					}

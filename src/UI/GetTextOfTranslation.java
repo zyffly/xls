@@ -121,8 +121,8 @@ public class GetTextOfTranslation extends JFrame implements ActionListener {
         List<LinkedHashMap<Integer, String>> mLis2 = getXlsData(Singleton
                 .getInstance().getInPutPath2());
         List<LinkedHashMap<Integer, String>> mLis3 = new ArrayList<LinkedHashMap<Integer, String>>();
-        LinkedHashMap<Integer, String> map1 = mLis1.get(0);
-        LinkedHashMap<Integer, String> map2 = mLis2.get(0);
+        LinkedHashMap<Integer, String> map1 = mLis1.get(0); //表一支持的国家列表
+        LinkedHashMap<Integer, String> map2 = mLis2.get(0);//表二支持的国家列表
         LinkedHashMap<Integer, String> map3 = new LinkedHashMap<>();
         Iterator iter2 = map2.entrySet().iterator();
         mLis3.addAll(mLis1);
@@ -138,7 +138,7 @@ public class GetTextOfTranslation extends JFrame implements ActionListener {
                     break;
                 }
             }
-
+//            System.out.println("map1  key----" + value);
             if (isGet) {
                 map3.put(count, value);
                 count++;
@@ -148,8 +148,7 @@ public class GetTextOfTranslation extends JFrame implements ActionListener {
         mLis3.set(0, map3);
         for (int i = 1; i < mLis3.size(); i++) {
             LinkedHashMap<Integer, String> tmpMap = mLis3.get(i);
-            System.out.println("size----" + (tmpMap.size() != map3.size()));
-            if (tmpMap.size() != map3.size()) {
+//            if (tmpMap.size() != map3.size()) {
                 String id = tmpMap.get(0);
                 LinkedHashMap<Integer, String> tmpMap2 = getLinkedHashMapFromID(id, mLis2);
                 if(tmpMap2 != null) {
@@ -157,23 +156,21 @@ public class GetTextOfTranslation extends JFrame implements ActionListener {
                     while (iter3.hasNext()) {
                         Map.Entry<Integer, String> entry = (Map.Entry<Integer, String>) iter3.next();
                         int key = entry.getKey();
-                        if (!tmpMap.containsKey(key) || tmpMap.get(key) == null) {
+//                        if (!tmpMap.containsKey(key) || tmpMap.get(key) == null) {
                             iter2 = map2.entrySet().iterator();
                             String value = entry.getValue();
                             while (iter2.hasNext()) {
-                                System.out.println("tmpMap--000001");
                                 Map.Entry<Integer, String> entry2 = (Map.Entry<Integer, String>) iter2.next();
-                                System.out.println("tmpMap----" + value);
+                                System.out.println("tmpMap----" + value    + "   " +  entry2.getValue());
                                 if (value.equalsIgnoreCase(entry2.getValue())) {
                                     int key2 = entry2.getKey();
                                     if (tmpMap2.containsKey(key2)) {
-                                        System.out.println("key2----" + key2);
                                         tmpMap.put(key, tmpMap2.get(key2));
                                     }
                                 }
                             }
-                        }
-                    }
+//                        }
+//                    }
                 }
             }
         }

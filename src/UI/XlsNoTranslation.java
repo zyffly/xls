@@ -68,7 +68,7 @@ public class XlsNoTranslation extends JFrame implements ActionListener {
 		p.add(selectButton2);
 		p.add(button1);
 
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds((width - 300) / 2, (height - 300) / 2, 300, 300);
 		setVisible(true);
 

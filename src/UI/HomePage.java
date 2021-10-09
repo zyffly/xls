@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 public class HomePage extends JFrame implements ActionListener {
 
     public HomePage() {
-        setTitle("HomePage");
+        setTitle("多语言工具类");
         Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
         int width = (int) screensize.getWidth();
         int height = (int) screensize.getHeight();
@@ -57,7 +57,7 @@ public class HomePage extends JFrame implements ActionListener {
         p.add(button6);
         p.add(button7);
 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds((width - 300) / 2, (height - 300) / 2, widthJPanel,
                 heightJPanel);
         setVisible(true);

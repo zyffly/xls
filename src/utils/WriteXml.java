@@ -178,11 +178,41 @@ public class WriteXml {
     private String replaceSpecialChar(String val) {
         if (val.contains("$CT_") && val.contains("_CT$")) {
             boolean isWhile = true;
+            boolean isAdd = val.contains("$CT_0_CT$");
             int i = 1;
+            if (isAdd) {
+                i = 0;
+            }
             while (isWhile) {
                 String specialChar = "$CT_" + i + "_CT$";
                 if (val.contains(specialChar)) {
-                    val = val.replace(specialChar, "%" + i + "$s");
+                    int tmpI = i;
+                    if (isAdd) {
+                        tmpI += 1;
+                    }
+                    val = val.replace(specialChar, "%" + tmpI + "$s");
+                    i++;
+                } else {
+                    isWhile = false;
+                }
+            }
+        }
+
+        if (val.contains("$ CT_") && val.contains("_CT $")) {
+            boolean isWhile = true;
+            boolean isAdd = val.contains("$ CT_0_CT $");
+            int i = 1;
+            if (isAdd) {
+                i = 0;
+            }
+            while (isWhile) {
+                String specialChar = "$ CT_" + i + "_CT $";
+                if (val.contains(specialChar)) {
+                    int tmpI = i;
+                    if (isAdd) {
+                        tmpI += 1;
+                    }
+                    val = val.replace(specialChar, "%" + tmpI + "$s");
                     i++;
                 } else {
                     isWhile = false;
